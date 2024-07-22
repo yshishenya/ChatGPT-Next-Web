@@ -1,7 +1,7 @@
 import { trimTopic, getMessageTextContent } from "../utils";
 
 import Locale, { getLang } from "../locales";
-import { showToast } from "../components/ui-lib";
+import { showToast } from "@/app/components/ui-lib";
 import { ModelConfig, ModelType, useAppConfig } from "./config";
 import { createEmptyMask, Mask } from "./mask";
 import {
@@ -9,8 +9,6 @@ import {
   DEFAULT_MODELS,
   DEFAULT_SYSTEM_TEMPLATE,
   KnowledgeCutOffDate,
-  ServiceProvider,
-  ModelProvider,
   StoreKey,
   SUMMARIZE_MODEL,
   GEMINI_SUMMARIZE_MODEL,
@@ -92,7 +90,7 @@ function createEmptySession(): ChatSession {
 }
 
 function getSummarizeModel(currentModel: string) {
-  // if it is using gpt-* models, force to use 3.5 to summarize
+  // if it is using gpt-* models, force to use 4o-mini to summarize
   if (currentModel.startsWith("gpt")) {
     const configStore = useAppConfig.getState();
     const accessStore = useAccessStore.getState();
